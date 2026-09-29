@@ -1,466 +1,638 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HACK - Õ - HÓLIC | Technology Beyond Limits</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+  scroll-behavior:smooth;
+}
 
-    <meta name="theme-color"
-          content="#070b14">
+body{
+  background:#050505;
+  color:white;
+}
 
-    <meta name="description"
-          content="HACKOHOLIC - Future technology, games, apps and devices.">
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(5,5,5,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
+}
 
-    <title>HACKOHOLIC | Future Starts Here</title>
+nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    <link rel="stylesheet" href="style.css">
+.logo{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span{
+  color:#00ff88;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#00ff88;
+}
+
+section{
+  min-height:100vh;
+  padding:110px 20px 60px;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+}
+
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:
+  radial-gradient(circle at center,#073d2b 0%,#050505 45%);
+}
+
+.hero h1{
+  font-size:clamp(45px,9vw,90px);
+  letter-spacing:5px;
+}
+
+.hero h1 span{
+  color:#00ff88;
+}
+
+.hero p{
+  margin:20px auto;
+  max-width:650px;
+  color:#aaa;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 22px;
+  margin:8px;
+  border-radius:10px;
+  background:#00ff88;
+  color:#000;
+  text-decoration:none;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+}
+
+.btn.dark{
+  background:#111;
+  color:white;
+  border:1px solid #333;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.title h2{
+  font-size:40px;
+}
+
+.title p{
+  color:#888;
+  margin-top:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#0d0d0d;
+  border:1px solid #222;
+  border-radius:18px;
+  padding:25px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#00ff88;
+  box-shadow:0 0 25px rgba(0,255,136,.12);
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#999;
+  line-height:1.5;
+}
+
+.ai-box{
+  max-width:800px;
+  margin:auto;
+  background:#0b0b0b;
+  border:1px solid #222;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.ai-header{
+  padding:18px;
+  background:#101010;
+  border-bottom:1px solid #222;
+  color:#00ff88;
+  font-weight:bold;
+}
+
+#chat{
+  height:350px;
+  overflow-y:auto;
+  padding:20px;
+}
+
+.message{
+  padding:12px 15px;
+  border-radius:12px;
+  margin-bottom:12px;
+  max-width:80%;
+  line-height:1.5;
+}
+
+.user{
+  background:#00ff88;
+  color:#000;
+  margin-left:auto;
+}
+
+.bot{
+  background:#181818;
+  color:white;
+}
+
+.ai-input{
+  display:flex;
+  border-top:1px solid #222;
+}
+
+.ai-input input{
+  flex:1;
+  padding:16px;
+  background:#080808;
+  color:white;
+  border:none;
+  outline:none;
+}
+
+.ai-input button{
+  width:80px;
+  border:none;
+  background:#00ff88;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.suggestion{
+  max-width:700px;
+  margin:auto;
+}
+
+textarea{
+  width:100%;
+  min-height:130px;
+  background:#0d0d0d;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:15px;
+  color:white;
+  resize:vertical;
+  outline:none;
+}
+
+.counter{
+  text-align:center;
+  margin:20px 0;
+  font-size:18px;
+}
+
+.counter span{
+  color:#00ff88;
+  font-size:30px;
+  font-weight:bold;
+}
+
+footer{
+  padding:30px 20px;
+  text-align:center;
+  border-top:1px solid #222;
+  color:#777;
+}
+
+@media(max-width:700px){
+  nav a{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  section{
+    padding-top:100px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<header>
+<nav>
+<div class="logo">HACK <span>- Õ -</span> HÓLIC</div>
 
-<header class="navbar">
-
-    <a href="#home" class="logo">
-        HACK<span>OHOLIC</span>
-    </a>
-
-    <button class="menu-btn" id="menuBtn">
-        ☰
-    </button>
-
-    <nav id="navMenu">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
+<div>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#games">Games</a>
+<a href="#apps">Apps</a>
+<a href="#ai">AI</a>
+<a href="#about">About</a>
+</div>
+</nav>
 </header>
 
-
 <!-- HOME -->
-
 <section id="home" class="hero">
+<div>
+<h1>HACK <span>- Õ -</span> HÓLIC</h1>
 
-    <div class="hero-content">
+<p>
+Technology, creativity and innovation — built by the next generation.
+Explore Hackoholic products, games, apps and AI projects.
+</p>
 
-        <p class="tag">
-            HACKOHOLIC TECHNOLOGY
-        </p>
-
-        <h1>
-            BUILDING THE
-            <span>FUTURE.</span>
-        </h1>
-
-        <p class="hero-text">
-            Games. Apps. Devices. Operating systems.
-            We are building our own technology universe.
-        </p>
-
-        <div class="buttons">
-
-            <a href="#products"
-               class="btn primary">
-                Explore Products
-            </a>
-
-            <a href="#projects"
-               class="btn secondary">
-                Our Projects
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="hero-orb"></div>
-
+<a class="btn" href="#products">Explore Hackoholic</a>
+<a class="btn dark" href="#ai">Try AI</a>
+</div>
 </section>
-
 
 <!-- PRODUCTS -->
-
-<section id="products" class="section">
-
-    <div class="section-heading">
-
-        <p class="tag">OUR PRODUCTS</p>
-
-        <h2>
-            Meet the <span>Future</span>
-        </h2>
-
-        <p>
-            Our first generation of HACKOHOLIC products.
-        </p>
-
-    </div>
-
-
-    <!-- HHV1 ALPHA -->
-
-    <div class="product-card">
-
-        <div class="product-info">
-
-            <div class="product-label">
-                SMARTPHONE • CONCEPT
-            </div>
-
-            <h3>
-                HHV1 <span>ALPHA</span>
-            </h3>
-
-            <p>
-                A futuristic smartphone concept created
-                by HACKOHOLIC.
-            </p>
-
-            <ul>
-                <li>🔄 Rotating Camera</li>
-                <li>⚡ Gaming-focused design</li>
-                <li>🧠 HACKOHOLIC ecosystem</li>
-                <li>🚀 Future-ready concept</li>
-            </ul>
-
-            <button class="btn primary"
-                    onclick="showProduct()">
-                View Product
-            </button>
-
-        </div>
-
-        <div class="phone">
-
-            <div class="camera-module">
-
-                <div class="lens"></div>
-                <div class="lens"></div>
-                <div class="lens"></div>
-
-            </div>
-
-            <div class="phone-screen">
-                HHV1
-                <small>ALPHA</small>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- DEVELOPER JOURNAL -->
-
-    <div class="simple-card">
-
-        <div>
-
-            <p class="product-label">
-                SOFTWARE
-            </p>
-
-            <h3>
-                HACKOHOLIC
-                <span>Developer Journal</span>
-            </h3>
-
-            <p>
-                Your personal place for coding notes,
-                projects, tasks and ideas.
-            </p>
-
-        </div>
-
-        <button class="btn secondary"
-                onclick="journalComingSoon()">
-            Coming Soon
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- PROJECTS -->
-
-<section id="projects" class="section dark-section">
-
-    <div class="section-heading">
-
-        <p class="tag">WHAT WE BUILD</p>
-
-        <h2>
-            Our <span>Projects</span>
-        </h2>
-
-    </div>
-
-
-    <div class="project-grid">
-
-        <article class="project-card">
-
-            <div class="project-icon">📱</div>
-
-            <h3>HACKOHOLIC Devices</h3>
-
-            <p>
-                Futuristic smartphones and smart devices
-                designed for the next generation.
-            </p>
-
-            <span>IN DEVELOPMENT</span>
-
-        </article>
-
-
-        <article class="project-card">
-
-            <div class="project-icon">🎮</div>
-
-            <h3>HACKOHOLIC Games</h3>
-
-            <p>
-                Original games, worlds and experiences
-                created by HACKOHOLIC.
-            </p>
-
-            <span>PLANNED</span>
-
-        </article>
-
-
-        <article class="project-card">
-
-            <div class="project-icon">💻</div>
-
-            <h3>HACKOHOLIC OS</h3>
-
-            <p>
-                Our experimental operating-system project
-                focused on customization and security.
-            </p>
-
-            <span>EXPERIMENTAL</span>
-
-        </article>
-
-
-        <article class="project-card">
-
-            <div class="project-icon">🧠</div>
-
-            <h3>Apps & Tools</h3>
-
-            <p>
-                Useful software and developer tools
-                built for everyday creators.
-            </p>
-
-            <span>IN DEVELOPMENT</span>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ROADMAP -->
-
-<section class="section">
-
-    <div class="section-heading">
-
-        <p class="tag">ROADMAP</p>
-
-        <h2>
-            The <span>Journey</span>
-        </h2>
-
-    </div>
-
-
-    <div class="timeline">
-
-        <div class="timeline-item active">
-
-            <b>01</b>
-
-            <div>
-                <h3>HACKOHOLIC Brand</h3>
-                <p>
-                    Website, GitHub and social presence.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <b>02</b>
-
-            <div>
-                <h3>First Software</h3>
-                <p>
-                    Developer Journal and useful apps.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <b>03</b>
-
-            <div>
-                <h3>Games</h3>
-                <p>
-                    Original HACKOHOLIC game projects.
-                </p>
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item">
-
-            <b>04</b>
-
-            <div>
-                <h3>Devices & OS</h3>
-                <p>
-                    HHV1 ALPHA and future technology.
-                </p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section id="about" class="section about-section">
-
-    <div class="section-heading">
-
-        <p class="tag">ABOUT HACKOHOLIC</p>
-
-        <h2>
-            Think Different.
-            <span>Build Different.</span>
-        </h2>
-
-    </div>
-
-    <p class="about-text">
-        HACKOHOLIC is an independent technology and
-        gaming project focused on creating futuristic
-        software, games, devices and experimental
-        technology.
-    </p>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section id="contact" class="contact">
-
-    <p class="tag">STAY CONNECTED</p>
-
-    <h2>
-        Follow the
-        <span>Journey.</span>
-    </h2>
-
-    <p>
-        Follow HACKOHOLIC as we build our projects.
-    </p>
-
-    <a href="#"
-       class="btn primary"
-       onclick="openYouTube()">
-        ▶ YouTube
-    </a>
-
-</section>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-logo">
-        HACKOHOLIC
-    </div>
-
-    <p>
-        © <span id="year"></span> HACKOHOLIC.
-        All rights reserved.
-    </p>
-
-    <p class="footer-small">
-        Built for the future.
-    </p>
-
-</footer>
-
-
-<!-- PRODUCT POPUP -->
-
-<div id="popup" class="popup">
-
-    <div class="popup-box">
-
-        <button class="close"
-                onclick="closeProduct()">
-            ✕
-        </button>
-
-        <p class="tag">
-            HACKOHOLIC
-        </p>
-
-        <h2>
-            HHV1 <span>ALPHA</span>
-        </h2>
-
-        <p>
-            HHV1 ALPHA is a futuristic smartphone
-            concept featuring a unique rotating camera
-            system and HACKOHOLIC ecosystem.
-        </p>
-
-        <div class="popup-feature">
-            🔄 Rotating Camera
-        </div>
-
-        <div class="popup-feature">
-            🎮 Gaming-focused concept
-        </div>
-
-        <div class="popup-feature">
-            🚀 HACKOHOLIC ecosystem
-        </div>
-
-    </div>
-
+<section id="products">
+<div class="container">
+
+<div class="title">
+<h2>Products</h2>
+<p>Hardware and technology projects from Hackoholic.</p>
 </div>
 
+<div class="grid">
 
-<script src="script.js"></script>
+<div class="card">
+<h3>HHV1 ALPHA</h3>
+<p>
+Hackoholic smartphone concept featuring an innovative rotating-camera design.
+</p>
+</div>
+
+<div class="card">
+<h3>HACK - Õ - HÓLIC BOT</h3>
+<p>
+A robotics project designed around smart automation and future technology.
+</p>
+</div>
+
+<div class="card">
+<h3>Future Devices</h3>
+<p>
+Experimental hardware, smart devices and new technology concepts.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+<div class="container">
+
+<div class="title">
+<h2>Games</h2>
+<p>Enter the Hackoholic gaming universe.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Hackoholic Game 01</h3>
+<p>Coming soon — an original Hackoholic gaming project.</p>
+</div>
+
+<div class="card">
+<h3>Open World Project</h3>
+<p>Future open-world gaming concept.</p>
+</div>
+
+<div class="card">
+<h3>More Games</h3>
+<p>New gaming projects will appear here.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- APPS -->
+<section id="apps">
+<div class="container">
+
+<div class="title">
+<h2>Apps</h2>
+<p>Software created inside the Hackoholic ecosystem.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>HELLÖ AÌ</h3>
+<p>
+A Hackoholic AI assistant concept designed for conversations,
+learning and everyday help.
+</p>
+</div>
+
+<div class="card">
+<h3>Hackoholic Theme</h3>
+<p>
+A futuristic Hackoholic-inspired Android customization concept.
+</p>
+</div>
+
+<div class="card">
+<h3>More Apps</h3>
+<p>Upcoming applications will be published here.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- AI -->
+<section id="ai">
+<div class="container">
+
+<div class="title">
+<h2>Hackoholic AI</h2>
+<p>Ask something and connect your secure backend later.</p>
+</div>
+
+<div class="ai-box">
+
+<div class="ai-header">
+HACKOHOLIC AI
+</div>
+
+<div id="chat">
+<div class="message bot">
+Hello! I am Hackoholic AI. Ask me something.
+</div>
+</div>
+
+<div class="ai-input">
+<input id="userInput" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SUGGESTION -->
+<section id="suggestions">
+<div class="container">
+
+<div class="title">
+<h2>Suggestions</h2>
+<p>Help shape the future of Hackoholic.</p>
+</div>
+
+<div class="suggestion">
+
+<textarea id="suggestionText"
+placeholder="Write your idea or suggestion..."></textarea>
+
+<br><br>
+
+<button class="btn" onclick="submitSuggestion()">
+Submit Suggestion
+</button>
+
+<div class="counter">
+Total Suggestions<br>
+<span id="suggestionCount">0</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="container">
+
+<div class="title">
+<h2>About Hackoholic</h2>
+<p>Building ideas into technology.</p>
+</div>
+
+<div class="card">
+<p>
+HACK - Õ - HÓLIC is a technology and creative project ecosystem
+focused on software, games, AI, robotics and future hardware.
+</p>
+
+<br>
+
+<p>
+Founder & CEO: <b>SUBHAM KUMAR</b>
+</p>
+
+<p>
+Partner: <b>SARTHAK KUMAR</b>
+</p>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 HACK - Õ - HÓLIC · Built with creativity and technology
+</footer>
+
+<script>
+
+/* =========================
+   SUGGESTION COUNTER
+========================= */
+
+let suggestionCount =
+Number(localStorage.getItem("hackoholicSuggestions")) || 0;
+
+document.getElementById("suggestionCount").textContent =
+suggestionCount;
+
+function submitSuggestion(){
+
+const text =
+document.getElementById("suggestionText").value.trim();
+
+if(!text){
+alert("Please write a suggestion first.");
+return;
+}
+
+suggestionCount++;
+
+localStorage.setItem(
+"hackoholicSuggestions",
+suggestionCount
+);
+
+document.getElementById("suggestionCount").textContent =
+suggestionCount;
+
+document.getElementById("suggestionText").value = "";
+
+alert("Suggestion submitted!");
+
+}
+
+
+/* =========================
+   AI FRONTEND
+========================= */
+
+async function sendMessage(){
+
+const input =
+document.getElementById("userInput");
+
+const message =
+input.value.trim();
+
+if(!message) return;
+
+const chat =
+document.getElementById("chat");
+
+chat.innerHTML +=
+`<div class="message user">${escapeHTML(message)}</div>`;
+
+input.value = "";
+
+chat.innerHTML +=
+`<div class="message bot" id="typing">
+Thinking...
+</div>`;
+
+chat.scrollTop = chat.scrollHeight;
+
+
+/*
+IMPORTANT:
+
+Replace this URL with your own backend URL.
+
+Example:
+
+https://your-backend.onrender.com/api/chat
+*/
+
+const BACKEND_URL =
+"https://YOUR-BACKEND-URL.onrender.com/api/chat";
+
+try{
+
+const response = await fetch(BACKEND_URL,{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:message
+})
+});
+
+if(!response.ok){
+throw new Error("Backend error");
+}
+
+const data = await response.json();
+
+document.getElementById("typing").remove();
+
+chat.innerHTML +=
+`<div class="message bot">
+${escapeHTML(data.reply || "No response received.")}
+</div>`;
+
+}catch(error){
+
+document.getElementById("typing").remove();
+
+chat.innerHTML +=
+`<div class="message bot">
+AI backend is not connected yet. Connect your backend URL in the code.
+</div>`;
+
+}
+
+chat.scrollTop = chat.scrollHeight;
+
+}
+
+
+function escapeHTML(text){
+
+return text
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+</script>
 
 </body>
-</html>
+                                                   </html>
